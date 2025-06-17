@@ -13,17 +13,11 @@ export const mapPageUrl =
     const pageUuid = parsePageId(pageId, { uuid: true })!
     const canonicalPageId = getCanonicalPageId(pageUuid, recordMap, { uuid })
 
-    const block = recordMap.block[pageUuid]?.value
-    const parentId = block?.parent_id
-    const collection =
-      parentId && recordMap.collection?.[parentId]
-        ? recordMap.collection[parentId].value
-        : null
-
+    const block = recordMap.block?.[pageUuid]?.value
     const isBlogPost =
       block?.type === 'page' &&
       block?.parent_table === 'collection' &&
-      collection?.name?.[0]?.[0] === 'Posts'
+      block?.parent_id === site.blogCollectionId
 
     const path = isBlogPost
       ? `/blog/${canonicalPageId}`
@@ -36,25 +30,22 @@ export const getCanonicalPageUrl =
   (site: Site, recordMap: ExtendedRecordMap) =>
   (pageId = '') => {
     const pageUuid = parsePageId(pageId, { uuid: true })!
+
+    if (uuidToId(pageId) === site.rootNotionPageId) {
+      return `https://${site.domain}`
+    }
+
     const canonicalPageId = getCanonicalPageId(pageUuid, recordMap, { uuid })
 
-    const block = recordMap.block[pageUuid]?.value
-    const parentId = block?.parent_id
-    const collection =
-      parentId && recordMap.collection?.[parentId]
-        ? recordMap.collection[parentId].value
-        : null
+    const block = recordMap.block?.[pageUuid]?.value
+    const isBlogPost =
+      block?.type === 'page' &&
+      block?.parent_table === 'collection' &&
+      block?.parent_id === site.blogCollectionId
 
-    const isRootPage = uuidToId(pageId) === site.rootNotionPageId
-
-    const path = isRootPage
-      ? ''
-      : (block?.type === 'page' &&
-         block?.parent_table === 'collection' &&
-         collection?.name?.[0]?.[0] === 'Posts'
-        )
-        ? `/blog/${canonicalPageId}`
-        : `/${canonicalPageId}`
+    const path = isBlogPost
+      ? `/blog/${canonicalPageId}`
+      : `/${canonicalPageId}`
 
     return `https://${site.domain}${path}`
   }
