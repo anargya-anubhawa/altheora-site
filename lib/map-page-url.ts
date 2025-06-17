@@ -5,8 +5,6 @@ import { includeNotionIdInUrls } from './config'
 import { getCanonicalPageId } from './get-canonical-page-id'
 import { type Site } from './types'
 
-// include UUIDs in page URLs during local development but not in production
-// (they're nice for debugging and speed up local dev)
 const uuid = !!includeNotionIdInUrls
 
 export const mapPageUrl =
@@ -16,7 +14,11 @@ export const mapPageUrl =
     const canonicalPageId = getCanonicalPageId(pageUuid, recordMap, { uuid })
 
     const block = recordMap.block[pageUuid]?.value
-    const collection = recordMap.collection?.[block?.parent_id]?.value
+    const parentId = block?.parent_id
+    const collection =
+      parentId && recordMap.collection?.[parentId]
+        ? recordMap.collection[parentId].value
+        : null
 
     const isBlogPost =
       block?.type === 'page' &&
@@ -37,20 +39,25 @@ export const getCanonicalPageUrl =
     const canonicalPageId = getCanonicalPageId(pageUuid, recordMap, { uuid })
 
     const block = recordMap.block[pageUuid]?.value
-    const collection = recordMap.collection?.[block?.parent_id]?.value
+    const parentId = block?.parent_id
+    const collection =
+      parentId && recordMap.collection?.[parentId]
+        ? recordMap.collection[parentId].value
+        : null
 
-    const isBlogPost =
-      block?.type === 'page' &&
-      block?.parent_table === 'collection' &&
-      collection?.name?.[0]?.[0] === 'Posts'
+    const isRootPage = uuidToId(pageId) === site.rootNotionPageId
 
-    const path = isBlogPost
-      ? `/blog/${canonicalPageId}`
-      : `/${canonicalPageId}`
+    const path = isRootPage
+      ? ''
+      : (block?.type === 'page' &&
+         block?.parent_table === 'collection' &&
+         collection?.name?.[0]?.[0] === 'Posts'
+        )
+        ? `/blog/${canonicalPageId}`
+        : `/${canonicalPageId}`
 
     return `https://${site.domain}${path}`
   }
-
 
 function createUrl(path: string, searchParams: URLSearchParams) {
   return [path, searchParams.toString()].filter(Boolean).join('?')
