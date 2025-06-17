@@ -95,6 +95,14 @@
   color: #2795e9;
 }
 
+.instagram:hover {
+  color: #hsl(50, 82%, 53%);
+}
+
+.facebook:hover {
+  color: #3b5998;
+}
+
 .mastodon:hover {
   color: #5a4be1;
 }

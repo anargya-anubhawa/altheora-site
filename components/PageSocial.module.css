@@ -86,6 +86,13 @@
   border-color: #2795e9;
 }
 
+.instagram .actionBgPane {
+  background: hsl(50, 82%, 53%);
+}
+.instagram:hover {
+  border-color: hsl(50, 82%, 53%);
+}
+
 .linkedin .actionBgPane {
   background: #0077b5;
 }
