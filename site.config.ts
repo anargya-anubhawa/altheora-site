@@ -57,12 +57,24 @@ export default siteConfig({
   navigationStyle: 'custom',
   navigationLinks: [
      {
+       title: 'Home',
+       pageId: '21493e5cdc0580f497fbc4c2a763ccf5'
+     },
+     {
        title: 'About',
-       pageId: 'f1199d37579b41cbabfc0b5174f4256a'
+       pageId: '21493e5cdc0581aa8d51ee5a1d20e2c9'
+     },
+     {
+       title: 'Resume',
+       pageId: '21593e5cdc05807e8332d0f988a8dcc4'
+     },
+     {
+       title: 'Blog',
+       pageId: '21593e5cdc058040a15eee25628585bf'
      },
      {
        title: 'Contact',
-       pageId: '6a29ebcb935a4f0689fe661ab5f3b8d1'
+       pageId: '21493e5cdc058134b71efee5bd16228f'
      }
    ]
 })
