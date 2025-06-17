@@ -39,7 +39,7 @@ async function getAllPagesImpl(
   rootNotionPageId: string,
   rootNotionSpaceId?: string,
   {
-    maxDepth = 1
+    maxDepth = 10
   }: {
     maxDepth?: number
   } = {}
@@ -53,43 +53,32 @@ async function getAllPagesImpl(
     }
   )
 
-  const canonicalPageMap = Object.keys(pageMap).reduce(
-    (map: Record<string, string>, pageId: string) => {
-      const recordMap = pageMap[pageId]
-      if (!recordMap) {
-        throw new Error(`Error loading page "${pageId}"`)
-      }
+  const canonicalPageMap: Record<string, string> = {}
 
-      const block = recordMap.block[pageId]?.value
-      if (
-        !(getPageProperty<boolean | null>('Public', block!, recordMap) ?? true)
-      ) {
-        return map
-      }
+  for (const pageId of Object.keys(pageMap)) {
+    const recordMap = pageMap[pageId]
+    if (!recordMap) continue
 
-      const canonicalPageId = getCanonicalPageId(pageId, recordMap, {
-        uuid
-      })!
+    const block = recordMap.block?.[pageId]?.value
+    if (!block) continue
 
-      if (map[canonicalPageId]) {
-        // you can have multiple pages in different collections that have the same id
-        // TODO: we may want to error if neither entry is a collection page
-        console.warn('error duplicate canonical page id', {
-          canonicalPageId,
-          pageId,
-          existingPageId: map[canonicalPageId]
-        })
+    const isPublic = getPageProperty<boolean | null>('Public', block, recordMap) ?? true
+    if (!isPublic) continue
 
-        return map
-      } else {
-        return {
-          ...map,
-          [canonicalPageId]: pageId
-        }
-      }
-    },
-    {}
-  )
+    const canonicalId = getCanonicalPageId(pageId, recordMap, { uuid })
+    if (!canonicalId) continue
+
+    if (canonicalPageMap[canonicalId]) {
+      console.warn('⚠️ Duplicate canonical page id', {
+        canonicalId,
+        pageId,
+        existingPageId: canonicalPageMap[canonicalId]
+      })
+      continue
+    }
+
+    canonicalPageMap[canonicalId] = pageId
+  }
 
   return {
     pageMap,
