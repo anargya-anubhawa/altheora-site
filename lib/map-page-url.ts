@@ -9,6 +9,27 @@ import { type Site } from './types'
 // (they're nice for debugging and speed up local dev)
 const uuid = !!includeNotionIdInUrls
 
+export const mapPageUrl =
+  (site: Site, recordMap: ExtendedRecordMap, searchParams: URLSearchParams) =>
+  (pageId = '') => {
+    const pageUuid = parsePageId(pageId, { uuid: true })!
+    const canonicalPageId = getCanonicalPageId(pageUuid, recordMap, { uuid })
+
+    const block = recordMap.block[pageUuid]?.value
+    const collection = recordMap.collection?.[block?.parent_id]?.value
+
+    const isBlogPost =
+      block?.type === 'page' &&
+      block?.parent_table === 'collection' &&
+      collection?.name?.[0]?.[0] === 'Posts'
+
+    const path = isBlogPost
+      ? `/blog/${canonicalPageId}`
+      : `/${canonicalPageId}`
+
+    return createUrl(path, searchParams)
+  }
+
 export const getCanonicalPageUrl =
   (site: Site, recordMap: ExtendedRecordMap) =>
   (pageId = '') => {
@@ -30,19 +51,6 @@ export const getCanonicalPageUrl =
     return `https://${site.domain}${path}`
   }
 
-export const getCanonicalPageUrl =
-  (site: Site, recordMap: ExtendedRecordMap) =>
-  (pageId = '') => {
-    const pageUuid = parsePageId(pageId, { uuid: true })!
-
-    if (uuidToId(pageId) === site.rootNotionPageId) {
-      return `https://${site.domain}`
-    } else {
-      return `https://${site.domain}/${getCanonicalPageId(pageUuid, recordMap, {
-        uuid
-      })}`
-    }
-  }
 
 function createUrl(path: string, searchParams: URLSearchParams) {
   return [path, searchParams.toString()].filter(Boolean).join('?')
