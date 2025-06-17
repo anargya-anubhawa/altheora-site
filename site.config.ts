@@ -9,8 +9,6 @@ export default siteConfig({
   // 95de4ccb-1dbe-46f6-ab66-689d1c911dfe
   rootNotionSpaceId: null,
 
-  blogCollectionId: '21493e5cdc05815990c5db43de12cf54',
-
   // basic site info (required)
   name: 'Anargya Personal Site',
   domain: 'anargya.my.id',

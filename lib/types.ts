@@ -32,7 +32,6 @@ export interface Site {
 
   rootNotionPageId: string
   rootNotionSpaceId: string | null
-  blogCollectionId?: string
 
   // settings
   html?: string
