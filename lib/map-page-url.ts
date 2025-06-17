@@ -9,19 +9,25 @@ import { type Site } from './types'
 // (they're nice for debugging and speed up local dev)
 const uuid = !!includeNotionIdInUrls
 
-export const mapPageUrl =
-  (site: Site, recordMap: ExtendedRecordMap, searchParams: URLSearchParams) =>
+export const getCanonicalPageUrl =
+  (site: Site, recordMap: ExtendedRecordMap) =>
   (pageId = '') => {
     const pageUuid = parsePageId(pageId, { uuid: true })!
+    const canonicalPageId = getCanonicalPageId(pageUuid, recordMap, { uuid })
 
-    if (uuidToId(pageUuid) === site.rootNotionPageId) {
-      return createUrl('/', searchParams)
-    } else {
-      return createUrl(
-        `/${getCanonicalPageId(pageUuid, recordMap, { uuid })}`,
-        searchParams
-      )
-    }
+    const block = recordMap.block[pageUuid]?.value
+    const collection = recordMap.collection?.[block?.parent_id]?.value
+
+    const isBlogPost =
+      block?.type === 'page' &&
+      block?.parent_table === 'collection' &&
+      collection?.name?.[0]?.[0] === 'Posts'
+
+    const path = isBlogPost
+      ? `/blog/${canonicalPageId}`
+      : `/${canonicalPageId}`
+
+    return `https://${site.domain}${path}`
   }
 
 export const getCanonicalPageUrl =
