@@ -449,9 +449,8 @@
 
 /* === Untuk Table of Contents di dark mode === */
 
-.dark-mode .notion-table-of-contents,
-.dark-mode .toc,
-.dark-mode .toc-container {
+.dark-mode .notion-aside-table-of-contents,
+.dark-mode .notion-table-of-contents{
   background-color: #262626 !important;
   color: #e0e0e0;
   border-radius: 8px;
@@ -463,32 +462,27 @@
   box-shadow: none;
 }
 
-.dark-mode .notion-table-of-contents > div,
-.dark-mode .toc > div,
-.dark-mode .toc-container > div {
+.dark-mode .notion-aside-table-of-contents > div,
+.dark-mode .notion-table-of-contents > div {
   background-color: transparent !important;
   color: inherit;
   box-shadow: none;
 }
 
-.dark-mode .toc-header,
 .dark-mode .notion-table-of-contents-header {
   color: #ffffff;
   font-weight: 600;
 }
 
-.dark-mode .toc a,
 .dark-mode .notion-table-of-contents a {
   color: #b2c2cc;
   text-decoration: none;
 }
 
-.dark-mode .toc a:hover,
 .dark-mode .notion-table-of-contents a:hover {
   color: #fffbcd;
 }
 
-.dark-mode .toc .active,
 .dark-mode .notion-table-of-contents .active {
   color: #fff584;
   font-weight: 600;
