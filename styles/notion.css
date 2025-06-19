@@ -452,13 +452,23 @@
 .dark-mode .notion-table-of-contents,
 .dark-mode .toc,
 .dark-mode .toc-container {
-  background-color: #262626;
+  background-color: #262626 !important;
   color: #e0e0e0;
   border-radius: 8px;
   padding: 1em;
   font-size: 0.95rem;
   line-height: 1.6;
   max-width: 300px;
+  border: 1px solid #333;
+  box-shadow: none;
+}
+
+.dark-mode .notion-table-of-contents > div,
+.dark-mode .toc > div,
+.dark-mode .toc-container > div {
+  background-color: transparent !important;
+  color: inherit;
+  box-shadow: none;
 }
 
 .dark-mode .toc-header,
@@ -475,16 +485,15 @@
 
 .dark-mode .toc a:hover,
 .dark-mode .notion-table-of-contents a:hover {
-  color: #91d1ff;
+  color: #fffbcd;
 }
 
 .dark-mode .toc .active,
 .dark-mode .notion-table-of-contents .active {
-  color: #4dabf7;
+  color: #fff584;
   font-weight: 600;
 }
 
-/* Workaround for Firefox not supporting backdrop-filter yet */
 @-moz-document url-prefix() {
   .dark-mode .notion-header {
     background: rgba(25, 25, 25, 0.8);
