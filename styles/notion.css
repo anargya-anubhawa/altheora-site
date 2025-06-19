@@ -153,36 +153,6 @@
     padding-left: 6vw;
     padding-right: 6vw;
   }
-  .notion-header .notion-nav-header {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
-  }
-  .notion-header .notion-nav-header .nav-header-title {
-    font-size: clamp(0.9rem, 3vw, 1.2rem);
-    flex: 1 1 auto;
-    max-width: 50vw;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-  .notion-header .notion-nav-header .nav-header-rhs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-    font-size: clamp(0.8rem, 2.5vw, 1rem);
-    justify-content: flex-end;
-    flex: 1 1 auto;
-    min-width: 45%;
-  }
-  .notion-header .breadcrumb.button {
-    padding: 0.25rem 0.6rem;
-    font-size: inherit;
-  }
-}
 
 @media only screen and (max-width: 600px) {
   .notion-search-button {
