@@ -368,6 +368,46 @@
   box-shadow: inset 0 -1px 0 0 rgba(255, 255, 255, 0.05);
 }
 
+/* Tambahan dark mode styling */
+.dark-mode body {
+  background-color: #2f3437;
+  color: #ffffff;
+}
+
+.dark-mode .notion {
+  background-color: #2f3437;
+  color: #ffffff;
+}
+
+.dark-mode .notion-page {
+  background-color: transparent;
+}
+
+.dark-mode .notion-text {
+  color: #e0e0e0;
+}
+
+.dark-mode .notion-h1,
+.dark-mode .notion-h2,
+.dark-mode .notion-h3 {
+  color: #ffffff;
+}
+
+.dark-mode .notion-callout {
+  background-color: #3a3f42;
+  border-left: 4px solid #5b5b5b;
+}
+
+.dark-mode .notion-code {
+  background-color: #1e1e1e;
+  border-color: #333;
+  color: #ccc;
+}
+
+.dark-mode .notion-link {
+  color: #91d1ff;
+}
+
 /* Workaround for Firefox not supporting backdrop-filter yet */
 @-moz-document url-prefix() {
   .dark-mode .notion-header {
