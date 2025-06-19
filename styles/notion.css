@@ -331,6 +331,11 @@
   );
 }
 
+.dark-mode body {
+  background-color: #2f3437;
+  color: white;
+}
+
 /* disable highlighting in dark mode */
 .dark-mode .notion-red_background,
 .dark-mode .notion-pink_background,
