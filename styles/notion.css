@@ -370,12 +370,12 @@
 
 /* Tambahan dark mode styling */
 .dark-mode body {
-  background-color: #2f3437;
+  background-color: #1e1e1e;
   color: #ffffff;
 }
 
 .dark-mode .notion {
-  background-color: #2f3437;
+  background-color: #1e1e1e;
   color: #ffffff;
 }
 
@@ -394,14 +394,14 @@
 }
 
 .dark-mode .notion-callout {
-  background-color: #3a3f42;
-  border-left: 4px solid #5b5b5b;
+  background-color: #2a2d2f;
+  border-left: 4px solid #6e6e6e;
 }
 
 .dark-mode .notion-code {
-  background-color: #1e1e1e;
+  background-color: #262626;
   border-color: #333;
-  color: #ccc;
+  color: #ddd;
 }
 
 .dark-mode .notion-link {
