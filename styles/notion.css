@@ -153,25 +153,27 @@
     padding-left: 6vw;
     padding-right: 6vw;
   }
-  .notion-aside-table-of-contents {
-    display: block !important;
-    margin: 1em 0 !important;
-    max-width: 100% !important;
-    width: 100% !important;
-  }
 }
 
 @media only screen and (max-width: 600px) {
   .notion-search-button {
     display: none !important;
   }
-  .notion-text,
-  .notion-callout,
-  .notion-quote,
-  .notion-collection-card {
-    margin-top: 0.75em !important;
-    margin-bottom: 0.75em !important;
-    line-height: 1.7 !important;
+  .notion-header .notion-nav-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
+  .notion-header .notion-nav-header .nav-header-title {
+    font-size: 1.1rem !important;
+    margin-bottom: 0.5rem;
+  }
+  .notion-header .notion-nav-header .nav-header-rhs {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
   .notion-text {
     font-size: 1rem !important;
