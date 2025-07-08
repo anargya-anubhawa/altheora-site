@@ -10,16 +10,16 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Anargya Personal Site',
-  domain: 'anargya.my.id',
+  name: 'Neuronote',
+  domain: 'study.anargya.my.id',
   author: 'Anargya Prima Anubhawa',
 
   // open graph metadata (optional)
-  description: 'Anargya Prima Anubhawa\'s personal site',
+  description: 'Neuronote by Anargya',
 
   // social usernames (optional)
   // twitter: '#',
-  github: 'anargya-anubhawa',
+  // github: 'anargya-anubhawa',
   linkedin: 'anargya-prima-anubhawa',
   instagram: 'anargya.anubhawa',
   //facebook: '#',
@@ -63,14 +63,6 @@ export default siteConfig({
      {
        title: 'About',
        pageId: '21493e5cdc0581aa8d51ee5a1d20e2c9'
-     },
-     {
-       title: 'Resume',
-       pageId: '21593e5cdc05807e8332d0f988a8dcc4'
-     },
-     {
-       title: 'Contact',
-       pageId: '21493e5cdc058134b71efee5bd16228f'
      }
    ]
 })
