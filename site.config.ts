@@ -10,12 +10,12 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Neuronote',
+  name: 'Studyspace',
   domain: 'study.anargya.my.id',
   author: 'Anargya Prima Anubhawa',
 
   // open graph metadata (optional)
-  description: 'Neuronote by Anargya',
+  description: '📚 Organized by Anargya',
 
   // social usernames (optional)
   // twitter: '#',
