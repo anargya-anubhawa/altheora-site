@@ -11,11 +11,11 @@ export default siteConfig({
 
   // basic site info (required)
   name: 'ALTHEORA',
-  domain: 'altheora.anargya.my.id',
+  domain: 'altheora.vercel.app',
   author: 'ALTHEORA',
 
   // open graph metadata (optional)
-  description: '📚 Organized by ALTHEORA',
+  description: '📚 Organized by KOSEMAKU 2025',
 
   // social usernames (optional)
   // twitter: '#',
