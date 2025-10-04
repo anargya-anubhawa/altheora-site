@@ -2,7 +2,7 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
   // the site's root Notion page (required)
-  rootNotionPageId: '21493e5cdc0580f497fbc4c2a763ccf5',
+  rootNotionPageId: '28293e5cdc05800f89eadb5dc5fa5160',
 
   // if you want to restrict pages to a single notion workspace (optional)
   // (this should be a Notion ID; see the docs for how to extract this)
@@ -10,22 +10,22 @@ export default siteConfig({
   rootNotionSpaceId: null,
 
   // basic site info (required)
-  name: 'Studyspace',
-  domain: 'study.anargya.my.id',
-  author: 'Anargya Prima Anubhawa',
+  name: 'ALTHEORA',
+  domain: 'altheora.anargya.my.id',
+  author: 'ALTHEORA',
 
   // open graph metadata (optional)
-  description: '📚 Organized by Anargya',
+  description: '📚 Organized by ALTHEORA',
 
   // social usernames (optional)
   // twitter: '#',
   // github: 'anargya-anubhawa',
-  linkedin: 'anargya-prima-anubhawa',
-  instagram: 'anargya.anubhawa',
-  //facebook: '#',
+  // linkedin: 'anargya-prima-anubhawa',
+  instagram: 'altheora.25',
+  // facebook: '#',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
   // newsletter: '#', // optional newsletter URL
-  youtube: '@anargya.anubhawa', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
+  // youtube: '@anargya.anubhawa', // optional youtube channel name or `channel/UCGbXXXXXXXXXXXXXXXXXXXXXX`
 
   // default notion icon and cover images for site-wide consistency (optional)
   // page-specific values will override these site-wide defaults
@@ -58,11 +58,11 @@ export default siteConfig({
   navigationLinks: [
      {
        title: 'Home',
-       pageId: '21493e5cdc0580f497fbc4c2a763ccf5'
+       pageId: '28293e5cdc05800f89eadb5dc5fa5160'
      },
      {
        title: 'About',
-       pageId: '21493e5cdc0581aa8d51ee5a1d20e2c9'
+       pageId: '28293e5cdc0580d483c0ceea46956275'
      }
    ]
 })
